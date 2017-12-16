@@ -1,0 +1,463 @@
+﻿/* Global*/
+
+.blue-button {
+    background-color: #4285f4;
+    color: #fff;
+    border: 1px solid #4285f4;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+}
+
+* {
+    box-sizing: border-box;
+    sborder: 1px solid red;
+}
+
+body {
+    font-family: arial,sans-serif;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+.list-reset {
+    padding: 0;
+    margin: 0 0 0 0;
+    list-style: none;
+    display: inline-block;
+}
+
+.reset-a {
+    text-decoration: none;
+}
+
+    .reset-a:hover {
+        text-decoration: underline;
+    }
+
+/*clearfix for navbar floats*/
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    clear: both;
+    *zoom: 1;
+}
+
+/*Clears cross from input fields*/
+::-webkit-search-decoration,
+::-webkit-search-cancel-button,
+::-webkit-search-results-button,
+::-webkit-search-results-decoration {
+    display: none;
+}
+
+/* HEADER */
+header {
+    width: 100%;
+    padding: 9px 0 7px 12px;
+    border: 1px solid #e6e6e6;
+    background-color: #f1f1f1;
+    display: inline-block;
+}
+
+    header .small-google-logo {
+        width: 98px;
+        display: inline-block;
+        float: left;
+    }
+
+    header #searchform {
+        display: block;
+        float: left;
+        vertical-align: middle;
+        padding: 0 0 0 15px;
+        margin: 1px 0 0 0;
+    }
+
+    header input {
+        -webkit-appearance: textfield;
+        box-sizing: content-box;
+        display: inline-block;
+        float: left;
+        width: 575px;
+        height: 34px;
+        border: 1px solid #d9d9d9;
+        line-height: 26px;
+        font-size: 16px;
+        font-family: arial,sans-serif;
+        padding-left: 8px;
+    }
+
+    header form input:focus {
+        outline: none;
+        border: 1px solid #0066ff;
+    }
+
+    header button {
+        font-size: 17px;
+        width: 40px;
+        height: 38px;
+        display: inline-block;
+        float: left;
+        margin: 0 0 0 -2px;
+    }
+
+        header /*magnifying glass*/ button:focus,
+        header button:hover {
+            outline: none;
+            background-color: #3b78e7;
+        }
+
+.right-head {
+    display: block;
+    float: right;
+    padding: 4px 48px 0 0
+}
+
+.options-image {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
+
+.sign-in-button {
+    background-color: #4285f4;
+    padding: 7px 0;
+    margin-left: 10px;
+    border: 1px solid #4285f4;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+    .sign-in-button a {
+        text-decoration: none;
+        color: #fff;
+        padding: 7px 12px;
+        font-size: 13px;
+        font-weight: bold;
+        border-radius: 1px;
+    }
+
+        .sign-in-button a:hover {
+            box-shadow: 0 1px 0 rgba(0,0,0,.15);
+            -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.15);
+        }
+
+/* full column*/
+.column {
+    padding-left: 130px;
+}
+
+/*NAVBAR*/
+.navbar {
+    padding-left: 120px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+nav {
+    display: block;
+    float: left;
+}
+
+    nav ul {
+        padding: 0;
+        margin: 0 0 0 0;
+        width: 670px;
+    }
+
+    nav li {
+        list-style: none;
+        display: inline-block;
+        font-size: small;
+        vertical-align: middle;
+        height: 54px;
+        line-height: 54px;
+    }
+
+        nav li a {
+            text-decoration: none;
+            color: #777;
+            margin: 0 5px;
+            padding: 19px 8px;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+            nav li a:visited {
+                text-decoration: none;
+                color: #777;
+            }
+
+            nav li a:hover {
+                color: #222;
+            }
+            /*turns first nav blue */
+            nav li a.first-navbar {
+                color: #4285f4;
+                font-weight: bold;
+                border-bottom: 3px solid #4285f4;
+            }
+
+.settings {
+    display: block;
+    float: right;
+    margin: 12px 47px 0 0;
+}
+
+.settings-button {
+    display: inline-block;
+    background-color: #f5f5f5;
+    padding: 4px 26px;
+    margin: 0px 0px 0 0;
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    font-size: 20px;
+    color: #444;
+    font-weight: bold;
+    text-align: center;
+}
+
+.settings a {
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.settings-button:hover {
+    color: #222;
+    background-color: #f8f8f8;
+    border: 1px solid #c6c6c6;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+/* RESULTS */
+.number-speed-results {
+    color: #777;
+    font-size: small;
+    margin: 17px 0 24px 0;
+}
+
+.result {
+    margin: 0 0 23px 0;
+    width: 600px;
+}
+
+    .result-title a,
+    .result li a {
+        text-decoration: none;
+        color: #033bbf;
+        font-weight: normal;
+    }
+
+        .result-title a:hover,
+        .result li a:hover {
+            text-decoration: underline;
+        }
+
+.result-title {
+    margin: 0;
+    font-size: 18px !important;
+}
+
+.meta-web-address {
+    color: #006621;
+    font-style: normal;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.ad {
+    background-color: #59946b;
+    color: white;
+    border: 1px solid #59946b;
+    border-radius: 2px;
+    font-size: 11px;
+    float: left;
+    width: 17px;
+    margin: 2px 3px 0 0;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.action-menu-web-address {
+    display: inline-block;
+}
+
+.result i {
+    color: #006621;
+}
+
+.meta-description {
+    color: #545454;
+    font-size: small;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.date-result {
+    color: #808080;
+}
+
+.result ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.result li {
+    display: inline-block;
+}
+
+    .result li a {
+        font-size: small;
+    }
+
+    .result li + li:before {
+        content: ' · ';
+    }
+
+.result em {
+    font-weight: bold;
+    font-style: normal;
+}
+
+.results-wrapper {
+    border-bottom: 1px solid #ebebeb;
+    width: 600px;
+}
+
+/* Related Searches */
+.related-searches {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ebebeb;
+    width: 600px;
+}
+
+.related-searches-title {
+    text-decoration: none;
+    font-weight: normal;
+    color: #777;
+    margin: 15 0 10 0;
+}
+
+.rel-search-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .rel-search-list a {
+        text-decoration: none;
+        color: #033bbf;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+        .rel-search-list a:hover {
+            text-decoration: underline;
+        }
+
+.search-column {
+    display: inline-block;
+    margin: 0 40px 0 0;
+    line-height: 25px;
+}
+
+/* PAGES */
+
+.pages {
+    margin: 20px 0 30px 0;
+}
+
+.google-o-div {
+    width: 600px;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+}
+
+.pages img {
+    width: 290px;
+    margin-right: 20px;
+    display: inline-block;
+}
+
+.pages i {
+    position: absolute;
+    top: 16px;
+    font-size: 12px;
+    color: #4285f4;
+}
+
+.page-numbers {
+    margin: 0 0 0 152px;
+}
+
+    .page-numbers li {
+        margin: 0 7.5px 0 0;
+    }
+
+    .page-numbers a {
+        color: #4285f4;
+        font-size: small;
+    }
+
+    .page-numbers .next {
+        margin-left: 52px;
+    }
+
+/* FOOTER */
+
+footer {
+}
+
+.footer-wrapper {
+    display: block;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 11px 0;
+    border: 1px solid #e6e6e6;
+    background-color: #f5f5f5;
+}
+
+footer .location {
+    color: #999;
+    font-size: small;
+    margin: 8px 0 12px 0;
+}
+
+footer .dot {
+    border-radius: 100%;
+    display: inline-block;
+    height: 10px;
+    margin: 6px 4px 9px 0;
+    vertical-align: middle;
+    width: 10px;
+    background: #9e9e9e;
+    visibility: visible;
+}
+
+.footer-wrapper a {
+    font-size: small;
+    color: #777;
+}
+
+    .footer-wrapper a:hover {
+        text-decoration: none;
+        color: #333;
+    }
+
+.footer-navbar li {
+    margin-right: 22px;
+}

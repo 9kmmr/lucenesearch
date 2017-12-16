@@ -1,0 +1,144 @@
+﻿<header>
+    <a href="google-search.html"><img class="small-google-logo"  src="newlogo.png" alt="google logo"></a>
+
+    <div id="searchform">
+        <!--can't make this work!> <img src="microphone.png" class="microphone"> -->
+        <input type="text" name="search" value="" placeholder="Type here to search ..." id="inputsearch">
+        <button class="blue-button" id="clicksearch">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <div class="right-head">
+        <span>Nhóm 1 INPG 12</span>
+    </div>
+</header>
+<!-- NAVBAR -->
+<section class="navbar clearfix">
+    <nav>
+        <ul>
+            <li><a class="first-navbar" href="#">Results</a></li>
+        </ul>
+    </nav>
+</section>
+<!-- RESULTS -->
+<section class="column">
+    <section class="results-wrapper">
+        <p class="number-speed-results"> <span id="numres"></span>  <span id="timecost"></span>  </p>
+        <!-- ORGANIC RESULTS -->
+        <!--RESULT 8 -->
+        <div class="result" id="total-result">
+
+        </div>
+
+
+    </section>
+    <!-- RELATED SEARCHES -->
+    <!-- PAGES -->
+    <section class='pages'>
+        <div class="google-o-div">
+
+        </div>
+        <div>
+            <ol class="page-numbers" id="pagination"></ol>
+
+        </div>
+
+    </section>
+</section>
+<!-- footer -->
+
+<script type="text/javascript">
+    $('#inputsearch').keydown(function (e) {
+        if (e.keyCode == 13) {
+
+            var data = [$("#inputsearch").val(), 1];
+            getdata(data, function (result) {
+                createPagi(result['NumberResult'], result['Resultperpage']);
+                appendata(result['sites'], 1);
+                $("#numres").text("About " + result['NumberResult'] + " results ");
+                $("#timecost").text("( " + Number(result['Time']) / 1000 + " Seconds )");
+
+            })
+        }
+    })
+    $("#clicksearch").click(function () {
+        if ($("#inputsearch").val().replace(/^\s+|\s+$/g, "").length != 0) {
+            var data = [$("#inputsearch").val(), 1];
+            getdata(data, function (result) {
+                createPagi(result['NumberResult'], result['Resultperpage']);
+                appendata(result['sites'], 1);
+                $("#numres").text("About " + result['NumberResult'] + " results ");
+                $("#timecost").text("( " + Number(result['Time']) / 1000 + " Seconds )");
+            })
+        }
+    })
+    function getdata(data, callback) {
+        $.get("http://localhost:80/api/Search", { query: data[0], pad: data[1] })
+            .done(function (response) {
+                callback(response);
+            });
+    }
+    function createPagi(numpage, perpage) {
+        var Allpage = parseInt(numpage);
+        var eachpage = parseInt(perpage);
+        var pagination = '';
+        if (Allpage / eachpage > 33) {
+
+            for (var i = 0; i < 32; i++) {
+                if (i == 0) {
+                    pagination += '<li class="list-reset"><a href="#" id="page' + (i + 1) + '" onclick="showPage(' + (i + 1) + ')" class="reset-a" data-page="' + (i + 1) + '" style="color:black">' + (i + 1) + '</a></li>';
+                } else {
+                    pagination += '<li class="list-reset"><a href="#" id="page' + (i + 1) + '" onclick="showPage(' + (i + 1) + ')" class="reset-a" data-page="' + (i + 1) + '">' + (i + 1) + '</a></li>';
+                }
+            }
+        } else {
+            var numpage = Allpage / eachpage;
+            for (var i = 0; i < numpage; i++) {
+                if (i == 0) {
+                    pagination += '<li class="list-reset"><a href="#" id="page' + (i + 1) + '" onclick="showPage(' + (i + 1) + ')" class="reset-a" data-page="' + (i + 1) + '" style="color:black">' + (i + 1) + '</a></li>';
+                } else {
+                    pagination += '<li class="list-reset"><a href="#" id="page' + (i + 1) + '" onclick="showPage(' + (i + 1) + ')" class="reset-a" data-page="' + (i + 1) + '">' + (i + 1) + '</a></li>';
+                }
+            }
+        }
+        $('.page-numbers').empty();
+        $(pagination).appendTo(".page-numbers");
+    }
+    function appendata(sites, page) {
+        $('#total-result').empty();
+        var d = new Date();
+
+        var month = d.getMonth() + 1;
+        var day = d.getDate();
+
+        var output = d.getFullYear() + ' - ' +
+            (month < 10 ? '0' : '') + month + ' - ' +
+            (day < 10 ? '0' : '') + day;
+        var y = (page - 1) * 10;
+        content = '';
+        for (var x = 0; x < sites.length; x++) {
+            content += '<div class="result">';
+            content += '<h3 class="result-title">' + '<a href="' + sites[x + y].url + '">' + sites[x + y].title + '</a>' + '</h3>';
+            content += '<div>' + '<cite class="meta-web-address">' + sites[x + y].url + '</cite>';
+            content += '<div class="action-menu-web-address">';
+            content += '<a href="#">' + '<i class="fa fa-caret-down" aria-hidden="true"></i>' + '</a>';
+            content += '</div>' + '</div>';
+            content += '<div class="meta-description">';
+            content += '<span class="date-result">' + output + ' - </span>' + sites[x + y].contents;
+            content += '</div>' + '</div>';
+        }
+        $(content).appendTo("#total-result");
+    }
+    function showPage(number) {
+        $('a.reset-a').css("color", "blue");
+        $("#page" + number).css("color", "black");
+
+        var data = [$("#inputsearch").val(), number];
+        getdata(data, function (result) {
+            appendata(result['sites'], 1);
+        });
+        return false;
+    }
+</script>
+
